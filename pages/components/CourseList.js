@@ -11,17 +11,17 @@ export default function CourseList({ courses }) {
         <h3>Number: {courses.id}</h3>
         <p>Description: {courses.description}</p>
 
-        <ul>
+        {/* <ul>
             <h4>Learning Objectives</h4>
             {courses.learningObjectives.map((learningObjective, index) => (
             <li key={index}>
                 {learningObjective}
             </li>
             ))}
-        </ul>
+        </ul> */}
 
 
-        <ul>
+        {/* <ul>
             <h4>Modules</h4>
             {courses.modules.map((module, index) => (
             <li key={index}>
@@ -33,13 +33,13 @@ export default function CourseList({ courses }) {
                             <p>order: {activity.order}</p>
                             <p>type: {activity.type}</p>
                             <p>completed? {activity.completed}</p>
-                            {/* <p>datetime: {activity.datetime}</p> */}
+                            <p>datetime: {activity.datetime}</p>
                         </p>
                     ))}
                 </p>
             </li>
             ))}
-        </ul>
+        </ul>  */}
 
 
         </>
