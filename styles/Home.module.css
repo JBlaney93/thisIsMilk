@@ -20,6 +20,25 @@
   margin-bottom: 30px;
 }
 
+.modulesHeader{
+  display: flex;
+  justify-content: space-between;
+}
+
+.modulesButton{
+  border-style: none;
+  background-color: tomato;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.modulesButton:hover{
+  cursor: pointer;
+  background-color: rgb(255, 46, 10);
+}
+
 .modulesList{
   list-style: none;
   border-radius: 4px;
