@@ -6,3 +6,15 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
+.modulesList{
+  list-style: none;
+  border: 2px solid blue;
+  margin: 10px 0;
+}
+
+.activityList{
+  list-style: none;
+  border: 2px solid green;
+  margin: 5px 0;
+}

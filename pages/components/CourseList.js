@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import styles from '@/styles/Home.module.css'
 
 export default function CourseList({ courses }) {
 
-    console.log('props', courses)
+    // console.log('props', courses)
 
     return (
         <>
@@ -13,7 +14,7 @@ export default function CourseList({ courses }) {
 
         <ul>
             <h4>Learning Objectives</h4>
-            {courses.learningObjectives.map((learningObjective, index) => (
+            {courses.learningObjectives?.map((learningObjective, index) => (
             <li key={index}>
                 {learningObjective}
             </li>
@@ -23,20 +24,30 @@ export default function CourseList({ courses }) {
 
         <ul>
             <h4>Modules</h4>
-            {courses.modules.map((module, index) => (
-            <li key={index}>
-                <p>module name: {module.name} module order: {module.order}</p>
-                <p>
-                    {module.activities.map((activity, index) => (
-                        <p key={index}>
-                            <p>name: {activity.name} (order:{activity.order})</p>
-                            <p>order: {activity.order}</p>
-                            <p>type: {activity.type}</p>
-                            <p>completed? {activity.completed}</p>
-                            <p>datetime: {activity.datetime}</p>
-                        </p>
-                    ))}
-                </p>
+            {courses.modules?.map((module, index) => (
+            
+            
+
+            <li key={index} className={styles.modulesList}>
+                {module.activities.length > 0 && (
+                    <div>
+                    <p>module name: {module.name} module order: {module.order}</p>
+                   
+
+                        <h4>activity list for this module</h4>
+                        {module.activities?.map((activity, index) => (
+                            <li key={index} className={styles.activityList}>
+                                <li>name: {activity.name} (order:{activity.order})</li>
+                                {/* <li>order: {activity.order}</li> */}
+                                <li>type: {activity.type}</li>
+                                <li>{activity.completed ? (<p>complete</p>) : (<p>not complete</p>)}</li>
+                                {activity.datetime && (
+                                    <li>date: {new Date(activity.datetime).toString()} </li>
+                                )}
+                            </li>
+                        ))}
+                    </div>
+                    )}
             </li>
             ))}
         </ul> 
