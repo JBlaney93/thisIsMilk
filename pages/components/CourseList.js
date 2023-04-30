@@ -5,29 +5,23 @@ export default function CourseList({ courses }) {
 
     // console.log('props', courses)
 
-    // const showIncomplete = () => {
-    //     // let incompleteActivities = [];
-    //     for (let i = 0; i < courses.modules.length; i++) {
-    //         const module = courses.modules[i]
-    //         let incompleteActivities = [];
-    //             for (let j = 0; j < module.activities.length; j++) {
-    //                 const activity = module.activities[j];
-    //                 if (!activity.completed) {
-    //                     incompleteActivities.push(activity)
-    //                 }
-    //             }
-    //     }
-    //     return(<div>{incompleteActivities}</div>)
-    // }
-
-
     const [showAllIncomplete, setShowAllIncomplete] = React.useState(false);
 
     const showAllIncompleteModules = () => {
-        // setShowAllIncomplete(true)
+        let incompleteModules = [];
+        courses.modules.forEach((module) => {
+            const incompleteActivities = module.activities.filter(
+                (activity) => !activity.completed
+            );
+            incompleteModules.push({
+                ...module,
+                activities: incompleteActivities
+            }) 
+        })
+
+        console.log(incompleteModules)
     }
     
-
     return (
         <div className={styles.pagewrapper}>
         <h1>Course Information</h1>
@@ -44,11 +38,10 @@ export default function CourseList({ courses }) {
                 ))}
             </ul>
         </div>
-
-
+            
         <ul>
-            <h3>Modules</h3>
-            <button onClick={showAllIncompleteModules}>Show All Incomplete Modules</button>
+            <h2>Modules:</h2>
+            {/* <button onClick={showAllIncompleteModules}>Show All Incomplete Modules</button> */}
 
             {courses.modules?.sort((a,b) => a.order - b.order).map((module, index) => (
             
@@ -75,39 +68,8 @@ export default function CourseList({ courses }) {
                 )}
             </li>
             ))}
-
-            {/* {courses.modules?.sort((a,b) => a.order - b.order).map((module, index) => (
-            
-            <li key={index} className={styles.modulesList}>
-                {module.activities.length > 0 && (
-                    <div>
-                    <p>module name: {module.name} module order: {module.order}</p>
-                   
-                        <h4>activity list for this module</h4>
-                        {module.activities
-                        ?.filter(activity => !activity.completed)
-                        .sort((a,b) => a.order - b.order)
-                        .map((activity, index) => (
-                            <li key={index} className={styles.activityList}>
-                                <li>name: {activity.name} (order:{activity.order})</li>
-                                <li>type: {activity.type}</li>
-                                <li>{activity.completed ? 
-                                    (<p className={styles.complete}>COMPLETE</p>) 
-                                    : 
-                                    (<p className={styles.incomplete}>INCOMPLETE</p>)}</li>
-                                {activity.datetime && (
-                                    <li>date: {new Date(activity.datetime).toString()} </li>
-                                )}
-                            </li>
-                        ))}
-                    </div>
-                )}
-            </li>
-            ))} */}
-
         </ul> 
 
-
-        </div>
+    </div>
     )
 }
