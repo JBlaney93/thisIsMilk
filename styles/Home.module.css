@@ -7,14 +7,51 @@
   min-height: 100vh;
 }
 
+.pagewrapper{
+  display:flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.description{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 10px;
+}
+
 .modulesList{
   list-style: none;
-  border: 2px solid blue;
-  margin: 10px 0;
+  border-radius: 4px;
+  margin: 15px 0;
+  padding: 10px;
+  background: white;
+}
+
+.moduleName{
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+.activityListTitle{
+  margin-bottom: 10px;
 }
 
 .activityList{
   list-style: none;
-  border: 2px solid green;
-  margin: 5px 0;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid black;
+}
+
+.complete{
+  color: green;
+  font-weight: bold;;
+}
+
+.incomplete{
+  color: red;
+  font-weight: bold;
 }
