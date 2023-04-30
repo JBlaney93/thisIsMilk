@@ -24,7 +24,7 @@ export default function CourseList({ courses }) {
 
         <ul>
             <h4>Modules</h4>
-            {courses.modules?.map((module, index) => (
+            {courses.modules?.sort((a,b) => a.order - b.order).map((module, index) => (
             
             
 
@@ -35,7 +35,7 @@ export default function CourseList({ courses }) {
                    
 
                         <h4>activity list for this module</h4>
-                        {module.activities?.map((activity, index) => (
+                        {module.activities?.sort((a,b) => a.order - b.order).map((activity, index) => (
                             <li key={index} className={styles.activityList}>
                                 <li>name: {activity.name} (order:{activity.order})</li>
                                 {/* <li>order: {activity.order}</li> */}
