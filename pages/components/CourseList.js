@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import styles from "@/styles/Home.module.css";
 
 export default function CourseList({ courses }) {
-  // console.log('props', courses)
-
   const [showAllIncomplete, setShowAllIncomplete] = React.useState(false);
+
   const modules = showAllIncomplete
     ? courses.modules.map((module) => {
         const incompleteActivities = module.activities.filter(
@@ -16,7 +15,6 @@ export default function CourseList({ courses }) {
         };
       })
     : courses.modules;
-  console.log(modules);
 
   const showAllIncompleteModules = () => {
     let incompleteModules = courses.modules.map((module) => {
@@ -28,8 +26,6 @@ export default function CourseList({ courses }) {
         activities: incompleteActivities,
       };
     });
-
-    console.log(incompleteModules);
   };
 
   return (
