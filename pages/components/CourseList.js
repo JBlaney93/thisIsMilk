@@ -16,18 +16,6 @@ export default function CourseList({ courses }) {
       })
     : courses.modules;
 
-  const showAllIncompleteModules = () => {
-    let incompleteModules = courses.modules.map((module) => {
-      const incompleteActivities = module.activities.filter(
-        (activity) => !activity.completed
-      );
-      return {
-        ...module,
-        activities: incompleteActivities,
-      };
-    });
-  };
-
   return (
     <div className={styles.pagewrapper}>
       <h1>Course Information</h1>
@@ -62,33 +50,31 @@ export default function CourseList({ courses }) {
             <>
               {module.activities.length > 0 && (
                 <li key={index} className={styles.modulesList}>
-                  <div>
-                    <h4 className={styles.moduleName}>
-                      Module {module.order} - {module.name}{" "}
-                    </h4>
+                  <h4 className={styles.moduleName}>
+                    Module {module.order} - {module.name}{" "}
+                  </h4>
 
-                    <h4 className={styles.activityListTitle}>Activity List:</h4>
-                    {module.activities
-                      ?.sort((a, b) => a.order - b.order)
-                      .map((activity, index) => (
-                        <li key={index} className={styles.activityList}>
-                          <li>
-                            {activity.order}: {activity.name}{" "}
-                          </li>
-                          <li>Activity Type: {activity.type}</li>
-                          {activity.datetime && (
-                            <li>{new Date(activity.datetime).toString()} </li>
-                          )}
-                          <li>
-                            {activity.completed ? (
-                              <p className={styles.complete}>COMPLETE</p>
-                            ) : (
-                              <p className={styles.incomplete}>INCOMPLETE</p>
-                            )}
-                          </li>
+                  <h4 className={styles.activityListTitle}>Activity List:</h4>
+                  {module.activities
+                    ?.sort((a, b) => a.order - b.order)
+                    .map((activity, index) => (
+                      <li key={index} className={styles.activityList}>
+                        <li>
+                          {activity.order}: {activity.name}{" "}
                         </li>
-                      ))}
-                  </div>
+                        <li>Activity Type: {activity.type}</li>
+                        {activity.datetime && (
+                          <li>{new Date(activity.datetime).toString()} </li>
+                        )}
+                        <li>
+                          {activity.completed ? (
+                            <p className={styles.complete}>COMPLETE</p>
+                          ) : (
+                            <p className={styles.incomplete}>INCOMPLETE</p>
+                          )}
+                        </li>
+                      </li>
+                    ))}
                 </li>
               )}
             </>
